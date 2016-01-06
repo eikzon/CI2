@@ -1,5 +1,3 @@
 #   cfcoptions : { "out": "../script/script.js"   }  
-square = (x) -> x * x
-cube   = (x) -> square(x) * x
 
-alert cube(10);
+test = scale for scale in ['toast', 'cheese', 'wine']

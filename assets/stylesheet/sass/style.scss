@@ -3,10 +3,132 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
+@import "../out_source/font-awesome/font-awesome";
 @import "compass/reset";
 
-@mixin fontset($radius: 5px) {
-    color: red;
+@font-face {
+    font-family: 'true_boldregular';
+    src: url('../fonts/tlight-webfont.eot');
+    src: url('../fonts/tlight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/tlight-webfont.woff2') format('woff2'),
+         url('../fonts/tlight-webfont.woff') format('woff'),
+         url('../fonts/tlight-webfont.ttf') format('truetype'),
+         url('../fonts/tlight-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
-p { @include fontset; }
+/* Color */
+$textGrey: #aaa;
+$textBrown: #86603a;
+$textBrownDrop: #b5824e;
+$textBrownLight: #bd9265;
+$textBlack: #666;
+$textBlackLight: #888;
+$textWhite: #fff;
+$textLightGery: #eee;
+$textBlue: #0d7ad7;
+$textGreen: #689e3e;
+/* Font Size */
+$topicSize: 1.2em;
+$detailSize: 0.85em;
+
+@mixin border-radius($radius: 5px) {
+    -moz-border-radius:$radius; -webkit-border-radius:$radius; border-radius:$radius; 
+}
+@mixin set-border-prop($size: 1px, $color: $textBrown, $style: solid, $position: all) {
+    @if $position==all {
+        border: $size $color $style;
+    } @else if $position==left {
+        border-left: $size $color $style;
+    } @else if $position==right {
+        border-right: $size $color $style;
+    } @else if $position==bottom {
+        border-bottom: $size $color $style;
+    } @else if $position==top {
+        border-top: $size $color $style;
+    } @else if $position==none-top {
+        border: $size $color $style;
+        border-top: none;
+    } @else if $position==none-left {
+        border: $size $color $style;
+        border-left: none;
+    } @else if $position==none-right {
+        border: $size $color $style;
+        border-right: none;
+    } @else if $position==none-bottom {
+        border: $size $color $style;
+        border-bottom: none;
+    }
+}
+@mixin set-line-height($height: 20px) {
+    line-height: $height;
+}
+
+@mixin clear-padding($padding: 0 0 0 0) { padding: $padding; }
+@mixin clear-margin($margin: 0 0 0 0) { margin: $margin; }
+@mixin set-img-properties { 
+    max-width: 100%; 
+    max-height: 100%;
+}
+@mixin set_list(){
+    ul.generate_list {
+        >li { 
+            @include clear-padding(0 0 22px 14px); 
+            div:second-child { @include set-border-prop(1px, $textLightGery, solid, none-top); }
+            img { vertical-align: middle; }
+            >.list_thumbnail img { @include border-radius; width: 400px; max-width: 100%; }
+            .topic { color: $textBrown; font-size: $topicSize; @include clear-margin(10px 0); height: 20px; line-height: 150%; overflow: hidden; }
+            .sub-topic { color: $textBrownLight; @include clear-margin(0px 0 5px 0); }
+            .detail { color: $textBlack; font-size: $detailSize; @include set-line-height; @include clear-margin(0px 0 5px 0); }
+            .option { 
+                height: 22px; overflow: hidden; color: $textGrey; @include set-line-height; 
+                @inclue set-line-height; vertical-align: middle; 
+                span { @include clear-padding(0 10px 0 0);
+                    i { @include clear-padding(0 5px 0 0); } 
+                }
+            }
+        }
+        >li:nth-child(3n+1) { @include clear-padding(0 14px 0 0); }
+        >li:nth-child(3n+2) { @include clear-padding(0 7px); }
+    }
+}
+
+@mixin set_container($height: 90%){ 
+    .container-fulid { margin-top: 2%; overflow-y: scroll; height: $height; }
+}
+
+html, body { height: 100%; }
+body { 
+    background-image: url('../../images/component/bg-body.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100% auto;
+}
+#wrapper { 
+    @include set-border-prop(5px, $textBrown, solid, all); 
+    background-color: $textWhite; height: 90%; margin-top: 2.5%; 
+    @include border-radius; @include clear-padding(1.5em);
+}
+#navbar { 
+    @include clear-padding; @include border-radius;
+    .nav>li { @include clear-margin(0 5px 0 0); background-color: $textBrownDrop; @include border-radius;}
+    .nav>li:last-child { @include clear-margin; }
+    .nav>li>a { @include clear-padding(10px 4.37em); color: $textWhite; @include border-radius; }
+    .nav>li>a:focus, .nav>li>a:hover { background-color: $textBrown; }
+    .nav>li.active>a { background-color: $textBrown; }
+}
+
+/* Clear Default Css */
+a, a:hover, a:active, a:visited, img { text-decoration: none; border: none; }
+
+/* Clear Bootstrap Style */
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 { @include clear-padding; }
+
+/* Clear Bootstrap Select */
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: auto;
+    padding-right: 10px;
+}
+

@@ -1,14 +1,10 @@
 (function() {
-  var cube, square;
+  var scale, test, _i, _len, _ref;
 
-  square = function(x) {
-    return x * x;
-  };
-
-  cube = function(x) {
-    return square(x) * x;
-  };
-
-  alert(cube(10));
+  _ref = ['toast', 'cheese', 'wine'];
+  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    scale = _ref[_i];
+    test = scale;
+  }
 
 }).call(this);

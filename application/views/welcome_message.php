@@ -84,7 +84,8 @@
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>
 <section>
-    <script src="<?PHP echo base_url('assets/javascript/script/script.js'); ?>"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="<?PHP echo base_url('assets/javascript/script/script.js'); ?>" type="text/javascript"></script>
 </section>
 </body>
 </html>
